@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Lobster Two', sans-serif;
+}
+
+@font-face {
+  src: url(../LobsterTwo-Regular.ttf);
+}
+
+body {
+  background: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+button {
+  margin: 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  background: #0000ff;
+  padding: 20px;
+  color: #fff;
+  font-size: 20px;
+  transition: transform 0.5s ease;
+  position: relative;
+}
+
+button.youtube {
+  background: #ff0000;
+}
+button.twitter {
+  background: #1da1f2;
+}
+
+/* For the TooTips */
+button::before {
+  --scale: 0;
+  color: #fff;
+  position: absolute;
+  top: -0.2rem;
+  left: 50%;
+  transform: translate(-50%, -100%) scale(var(--scale));
+  transform-origin: bottom center;
+  width: max-content;
+  max-width: 100%;
+  transition: transform 200ms ease;
+}
+
+button.facebook::before {
+  content: attr(data-facebook);
+}
+
+button.youtube::before {
+  content: attr(data-youtube);
+}
+button.twitter::before {
+  content: attr(data-twitter);
+}
+
+button:hover::before {
+  --scale: 1;
+}
